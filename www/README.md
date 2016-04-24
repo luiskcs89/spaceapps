@@ -1,32 +1,14 @@
-This is an addon starter template for the [Ionic Framework](http://ionicframework.com/).
+Plant-Ent
+=====================
 
-## How to use this template
+Project Created for the 2016 NASA Space Apps Challenge
 
-*This template does not work on its own*. It is missing the Ionic library, and AngularJS.
+## Description
 
-To use this, either create a new ionic project using the ionic node.js utility, or copy and paste this into an existing Cordova project and download a release of Ionic separately.
+Costa Rica is aiming for Carbon neutrality on 2021. We need to do something to help against climate change.
 
-### With the Ionic tool:
+One very good solution for keeping CO2 from getting in to the atmosphere is plating trees. But it is not just planting a tree that helps, is making it grow and know what tree species are good for your community. 
 
-Take the name after `ionic-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+Our solution uses NASA's data to show why this is important and how you can help, by correlating temperature and CO2 emitions through time and how planting and growing trees helps. Then it shows users what tree species are good for planting in the community they live in, and for the different purpose they want it (enhance scenery, habitat for animals, reduce carbon footprint, etc.) It then shows an itinerary of steps to make that tree grow and gives points as rewards for achieving each step.
 
-```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myApp tabs
-```
-
-Then, to run it, cd into `myApp` and run:
-
-```bash
-$ ionic platform add ios
-$ ionic build ios
-$ ionic emulate ios
-```
-
-Substitute ios for android if not on a Mac, but if you can, the ios development toolchain is a lot easier to work with until you need to do anything custom to Android.
-
-## Demo
-http://plnkr.co/edit/qYMCrt?p=preview
-
-## Issues
-Issues have been disabled on this repo, if you do find an issue or have a question consider posting it on the [Ionic Forum](http://forum.ionicframework.com/).  Or else if there is truly an error, follow our guidelines for [submitting an issue](http://ionicframework.com/contribute/#issues) to the main Ionic repository. On the other hand, pull requests are welcome here!
+On the community section of our solution users can see all the planted trees and they can also find tree repositories to go and get the one they want to plant.
