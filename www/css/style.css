@@ -91,6 +91,11 @@ body {
 	height: 34%;
 }
 
+.nosotros-opt {
+	padding: 0 0 0px;
+	height: 51%;
+}
+
 progress[value]::-webkit-progress-bar {
   background-color: #eee;
   border-radius: 2px;

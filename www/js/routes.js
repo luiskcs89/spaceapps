@@ -1,6 +1,16 @@
 angular.module('app.routes', [])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+
+  $ionicConfigProvider.views.maxCache(0);
+  $ionicConfigProvider.tabs.style('standard');
+  $ionicConfigProvider.tabs.position('bottom');
+  $ionicConfigProvider.navBar.alignTitle('center');
+  $ionicConfigProvider.views.transition("android");
+
+  $ionicConfigProvider.backButton.previousTitleText(false);
+  $ionicConfigProvider.backButton.icon('ion-chevron-left');
+  $ionicConfigProvider.backButton.text('');
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -70,12 +80,42 @@ angular.module('app.routes', [])
     }
   })
 
+  .state('tabsController.mibosque', {
+    url: "/mibosque",
+    views: {
+      'tab2': {
+        templateUrl: "templates/mibosque.html",
+        controller: 'mibosqueCtrl'
+      }
+    }
+  })
+
   .state('tabsController.nosotros', {
     url: '/nosotros',
     views: {
       'tab3': {
         templateUrl: 'templates/nosotros.html',
         controller: 'nosotrosCtrl'
+      }
+    }
+  })
+
+  .state('tabsController.plantados', {
+    url: '/plantados',
+    views: {
+      'tab3': {
+        templateUrl: 'templates/plantados.html',
+        controller: 'plantadosCtrl'
+      }
+    }
+  })
+
+  .state('tabsController.repositorios', {
+    url: '/repositorios',
+    views: {
+      'tab3': {
+        templateUrl: 'templates/repositorios.html',
+        controller: 'repositoriosCtrl'
       }
     }
   })

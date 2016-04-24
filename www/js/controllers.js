@@ -14,11 +14,26 @@ angular.module('app.controllers', [])
 	}
 })
    
-.controller('vosCtrl', function($scope) {
+.controller('vosCtrl', function($scope, $state) {
+	$scope.goToMiBosque = function() {
+		$state.go('tabsController.mibosque');
+	}
 
+	if(localStorage.gotomibosque == 1) {
+		localStorage.clear('gotomibosque'); 
+		$state.go('tabsController.mibosque');
+	}
 })
    
-.controller('nosotrosCtrl', function($scope) {
+.controller('nosotrosCtrl', function($scope, $state) {
+
+	$scope.goToPlantados = function() {
+		$state.go('tabsController.plantados');
+	}
+
+	$scope.goToRepositorio = function() {
+		$state.go('tabsController.repositorios');
+	}
 
 })
 
@@ -45,14 +60,111 @@ angular.module('app.controllers', [])
 	$scope.co2 = 10;
 })
 
-.controller('dondeCtrl', function($scope, $timeout) {
+.controller('dondeCtrl', function($scope, $timeout, $state) {
 	$scope.finishedLoading = false;
 	$timeout(function() {
     	$scope.finishedLoading = true;
    	}, 2000);
+
+   	$scope.goToDonde1 = function() {
+		$state.go('tabsController.donde1');
+	}
 })
 
-.controller('donde1Ctrl', function($scope, $timeout) {
+.controller('donde1Ctrl', function($scope, $state) {
+	$scope.goToMiBosque = function() {
+		localStorage.gotomibosque = 1;
+		$state.go('tabsController.vos');
+	}
+})
+
+.controller('mibosqueCtrl', function($scope) {
+	$scope.dia1 = true;
+})
+
+.controller('plantadosCtrl', function($scope, $timeout) {
+	var latitudes = [9.9154433, 9.931647, 9.932906, 9.929894, 9.930471, 9.935674, 9.947561]
+	var longitudes = [-84.076412, -84.085176, -84.099796, -84.093818, -84.087903, -84.073954, -84.084991]
+	angular.extend($scope, {
+                center : {
+                  lat: 9.933333,
+                  lng: -84.083333,
+                  zoom: 14
+                },
+                markers: {},
+                defaults: {
+                    scrollWheelZoom: false
+                },
+                events: {
+                    map: {
+                        enable: ['zoomend', 'zoomstart', 'drag', 'click', 'mousemove'],
+                        logic: 'emit'
+                    }
+                },
+                icons: {
+                  icon: {
+                      iconUrl: 'img/marker.png',
+                      //shadowUrl: 'examples/img/leaf-shadow.png',
+                      iconSize:     [32, 32], // size of the icon
+                      //shadowSize:   [50, 64], // size of the shadow
+                      iconAnchor:   [16, 32], // point of the icon which will correspond to marker's location
+                      //shadowAnchor: [4, 62],  // the same for the shadow
+                      popupAnchor:  [0, -40] // point from which the popup should open relative to the iconAnchor
+                  }
+                },
+                layers: {
+                    baselayers: {
+                        googleTerrain: {
+                            name: 'Google',
+                            layerType: 'ROADMAP',
+                            type: 'google',
+                            layerOptions: {
+                                showOnSelector: false
+                            }
+                        },
+                    },
+                    overlays: {
+                        tree: {
+                            type: "markercluster",
+                            name: 'tree',
+                            visible: true,
+                            layerOptions: {
+                                showOnSelector: false
+                            },
+                            layerParams: {
+                                showOnSelector: false
+                            }
+                        },
+                    }
+                },
+                
+            });
+
+	
+	$scope.markers = {};
+
+    for (var i = 0; i < latitudes.length; i++) {
+
+            
+
+            var content = '<div style="text-align: center;" id="content"><div><img style="width: 40px; height:40px; border-radius: 50%" src="img/avatar.png"><p style="margin: 0px">Ana P.</p></div> <br><img style="width: 100px; height: 100px; border-radius: 50%;" src="img/cortezamarillosq.jpg" ng-click="goToMiBosque()"><p style="margin: 0px">27 días</p></div>';
+
+
+            $scope.markers['m'+i] = {
+                lat: latitudes[i],
+                lng: longitudes[i],
+                icon: $scope.icons.icon,
+                message: content,
+                compileMessage: true,
+                layer: "tree"
+            };
+
+    }
+
+
+})
+
+.controller('repositoriosCtrl', function($scope) {
 	
 })
     
