@@ -43,8 +43,64 @@ angular.module('app.controllers', [])
 	    buttons: [{ text: 'OK', type: 'button-balanced'}]
 	});
 
-	$scope.year = 1816;
-	$scope.co2 = 10;
+	$scope.co2 = 8000;
+
+  $scope.data = {
+    year : 1990
+  }
+
+
+  $scope.$watch('data.year', function() {
+      $scope.co2 = (8000 + ($scope.data.year - 1990) * 428)
+      $scope.co2Width = $scope.co2 * 100 / 14000;
+  });
+
+  angular.extend($scope, {
+        center : {
+          lat: 9.933333,
+          lng: -84.083333,
+          zoom: 7
+        },
+        markers: {},
+        defaults: {
+            scrollWheelZoom: false
+        },
+        events: {
+            map: {
+                enable: ['zoomend', 'zoomstart', 'drag', 'click', 'mousemove'],
+                logic: 'emit'
+            }
+        },
+        icons: {
+        },
+        layers: {
+            baselayers: {
+                mapbox_light: {
+                    name: 'Temperaturas',
+                    url: 'http://api.tiles.mapbox.com/v4/{mapid}/{z}/{x}/{y}.png?access_token={apikey}',
+                    type: 'xyz',
+                    layerOptions: {
+                        apikey: 'pk.eyJ1IjoiamltbXloZXJyZXJhZyIsImEiOiJjaW5lMTBrcDUweGJndjBrcWVzaXQzbmw1In0.AFQlhqA9oBtM9j8Xy8DABg',
+                        mapid: 'mapbox.mapbox-terrain-v2'
+                    }
+                },
+            },
+            overlays: {
+                tree: {
+                    type: "markercluster",
+                    name: 'tree',
+                    visible: true,
+                    layerOptions: {
+                        showOnSelector: false
+                    },
+                    layerParams: {
+                        showOnSelector: false
+                    }
+                },
+            }
+        },
+        
+    });
 })
 
 .controller('comoCtrl', function($scope, $ionicPopup) {
@@ -56,8 +112,62 @@ angular.module('app.controllers', [])
 	    template: '<p>El aumento de la temperatura está dada por varias causas humanas y naturales, entre esas la liberación de CO<sub>2</sub> a la atmósfera</p><p>Si plantamos árboles estos atraparán el C0<sub>2</sub> en su tronco</p><p>Además sembrar árboles en zonas aptas para reforestación regenera el hábitat de muchos animales y restaura corredores biólogicos</p>',
 	    buttons: [{ text: 'OK', type: 'button-balanced'}]
 	});*/
-	$scope.trees = 0;
-	$scope.co2 = 10;
+	$scope.data = {
+    trees: 0
+  };
+	$scope.co2 = 14000;
+
+  $scope.$watch('data.trees', function() {
+      $scope.co2 = Math.floor(14000 - ($scope.data.trees) * 0.22);
+      $scope.co2Width = $scope.co2 * 100 / 14000;
+  });
+
+  angular.extend($scope, {
+        center : {
+          lat: 9.933333,
+          lng: -84.083333,
+          zoom: 7
+        },
+        markers: {},
+        defaults: {
+            scrollWheelZoom: false
+        },
+        events: {
+            map: {
+                enable: ['zoomend', 'zoomstart', 'drag', 'click', 'mousemove'],
+                logic: 'emit'
+            }
+        },
+        icons: {
+        },
+        layers: {
+            baselayers: {
+                mapbox_light: {
+                    name: 'Temperaturas',
+                    url: 'http://api.tiles.mapbox.com/v4/{mapid}/{z}/{x}/{y}.png?access_token={apikey}',
+                    type: 'xyz',
+                    layerOptions: {
+                        apikey: 'pk.eyJ1IjoiamltbXloZXJyZXJhZyIsImEiOiJjaW5lMTBrcDUweGJndjBrcWVzaXQzbmw1In0.AFQlhqA9oBtM9j8Xy8DABg',
+                        mapid: 'mapbox.mapbox-terrain-v2'
+                    }
+                },
+            },
+            overlays: {
+                tree: {
+                    type: "markercluster",
+                    name: 'tree',
+                    visible: true,
+                    layerOptions: {
+                        showOnSelector: false
+                    },
+                    layerParams: {
+                        showOnSelector: false
+                    }
+                },
+            }
+        },
+        
+    });
 })
 
 .controller('dondeCtrl', function($scope, $timeout, $state) {

@@ -1,25 +1,14 @@
-Ionic App Base
+Plant-Ent
 =====================
 
-A starting project for Ionic that optionally supports using custom SCSS.
+Project Created for the 2016 NASA Space Apps Challenge
 
-## Using this project
+## Description
 
-We recommend using the [Ionic CLI](https://github.com/driftyco/ionic-cli) to create new Ionic projects that are based on this project but use a ready-made starter template.
+Costa Rica is aiming for Carbon neutrality on 2021. We need to do something to help against climate change.
 
-For example, to start a new Ionic project with the default tabs interface, make sure the `ionic` utility is installed:
+One very good solution for keeping CO2 from getting in to the atmosphere is plating trees. But it is not just planting a tree that helps, is making it grow and know what tree species are good for your community. 
 
-```bash
-$ npm install -g ionic
-```
+Our solution uses NASA's data to show why this is important and how you can help, by correlating temperature and CO2 emitions through time and how planting and growing trees helps. Then it shows users what tree species are good for planting in the community they live in, and for the different purpose they want it (enhance scenery, habitat for animals, reduce carbon footprint, etc.) It then shows an itinerary of steps to make that tree grow and gives points as rewards for achieving each step.
 
-Then run: 
-
-```bash
-$ ionic start myProject tabs
-```
-
-More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/getting-started) page and the [Ionic CLI](https://github.com/driftyco/ionic-cli) repo.
-
-## Issues
-Issues have been disabled on this repo, if you do find an issue or have a question consider posting it on the [Ionic Forum](http://forum.ionicframework.com/).  Or else if there is truly an error, follow our guidelines for [submitting an issue](http://ionicframework.com/submit-issue/) to the main Ionic repository.
+On the community section of our solution users can see all the planted trees and they can also find tree repositories to go and get the one they want to plant.
